@@ -1,0 +1,42 @@
+$darkblue: #142e4e;
+$lightblue: #3584e4;
+
+.rootcontainer { 
+  min-height: 100vh;
+  height: 100%;
+  &>div {
+    height: calc(100% - 60px);
+  }
+  background-color: var(--color-canvas);
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: $lightblue #ffffff;
+}
+
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $lightblue;
+  border-radius: 20px;
+  border:0px solid $darkblue;
+}
+
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+

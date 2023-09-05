@@ -1,0 +1,48 @@
+name: Apiary To OpenApiRenderer
+run-name: Apiary To OpenApiRenderer - ${{ github.actor }}
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Apiary To OpenApiRenderer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        with:
+          ruby-version: '3.1'
+      - name: Install Apiary
+        run: gem install apiaryio
+      - name: Install apib2swagger
+        run: npm install -g apib2swagger
+      - name: setup env and scripts
+        shell: bash
+        run: echo "APIARY_API_KEY=bde9b4eb5870355f6a5e603569d8ee00" >> $GITHUB_ENV
+      - name: fetch apiary docs
+        run: apiary fetch --api-name=whitelabeladmin > src/spec.apib
+      - name: convert to swagger
+        run: apib2swagger -i src/spec/spec.apib -o src/spec.json
+      - name: React app dependencies
+        run: npm install
+      - name: Build React app
+        run: npm run build
+      - name: Deploy
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          npm run deploy
+        env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
