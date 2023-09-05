@@ -1,6 +1,6 @@
 import { API } from '@stoplight/elements';
 import { subscribeTheme } from "@stoplight/mosaic";
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import './App.scss';
 import { Header } from './Header';
 import { ScrollContainer } from './ScrollContainer';
@@ -24,10 +24,10 @@ function App() {
       const elem = document.querySelector("#mosaic-provider-react-aria-0-2 > div > div > div > div.sl-flex > div.sl-flex.sl-overflow-y-auto.sl-flex-col.sl-sticky.sl-inset-y-0.sl-pt-8.sl-bg-canvas-100.sl-border-r > a")
       elem?.remove()
       overrideStyle()
-    }, []
+    }, [overrideStyle]
   );
 
-  
+
 
 
   return (
