@@ -21,6 +21,7 @@ const Header = ({ spec }) => {
         }
       }
       OpenAPIParser.bundle(spec, options, (err, result) => {
+        console.log('bundle info', result, result?.err)
         if (err) {
           console.error(err);
           return;
