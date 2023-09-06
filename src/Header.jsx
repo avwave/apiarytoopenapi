@@ -16,9 +16,11 @@ const Header = ({ spec }) => {
     () => {
       if (!spec) return
       const options = {
-
+        dereference: {
+          circular: true
+        }
       }
-      OpenAPIParser.dereference(spec, options, (err, result) => {
+      OpenAPIParser.bundle(spec, options, (err, result) => {
         if (err) {
           console.error(err);
           return;
