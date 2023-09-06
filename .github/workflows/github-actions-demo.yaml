@@ -30,7 +30,7 @@ jobs:
       - name: fetch apiary docs
         run: apiary fetch --api-name=whitelabeladmin > src/spec.apib
       - name: convert to swagger
-        run: apib2swagger -i src/spec.apib -o src/spec.json
+        run: apib2swagger --open-api-3 -i src/spec.apib -o src/spec.json
       - name: React app dependencies
         run: yarn install
       - name: Build React app
