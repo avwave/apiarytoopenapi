@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sticky, StickyContainer } from 'react-sticky';
 
 const ScrollContainer = ({ header, children }) => {
 
