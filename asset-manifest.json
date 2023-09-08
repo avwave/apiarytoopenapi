@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/apiarytoopenapi/static/css/main.efccfdda.chunk.css",
-    "main.js": "/apiarytoopenapi/static/js/main.603477a2.chunk.js",
-    "main.js.map": "/apiarytoopenapi/static/js/main.603477a2.chunk.js.map",
-    "runtime-main.js": "/apiarytoopenapi/static/js/runtime-main.05821ff7.js",
-    "runtime-main.js.map": "/apiarytoopenapi/static/js/runtime-main.05821ff7.js.map",
-    "static/js/2.478f0ff8.chunk.js": "/apiarytoopenapi/static/js/2.478f0ff8.chunk.js",
-    "static/js/2.478f0ff8.chunk.js.map": "/apiarytoopenapi/static/js/2.478f0ff8.chunk.js.map",
-    "static/js/3.d2e88142.chunk.js": "/apiarytoopenapi/static/js/3.d2e88142.chunk.js",
-    "static/js/3.d2e88142.chunk.js.map": "/apiarytoopenapi/static/js/3.d2e88142.chunk.js.map",
+    "main.css": "/apiarytoopenapi/static/css/main.78145918.chunk.css",
+    "main.js": "/apiarytoopenapi/static/js/main.1219ecac.chunk.js",
+    "main.js.map": "/apiarytoopenapi/static/js/main.1219ecac.chunk.js.map",
+    "runtime-main.js": "/apiarytoopenapi/static/js/runtime-main.049c924f.js",
+    "runtime-main.js.map": "/apiarytoopenapi/static/js/runtime-main.049c924f.js.map",
+    "static/js/2.883610e2.chunk.js": "/apiarytoopenapi/static/js/2.883610e2.chunk.js",
+    "static/js/2.883610e2.chunk.js.map": "/apiarytoopenapi/static/js/2.883610e2.chunk.js.map",
+    "static/js/3.d3c875d3.chunk.js": "/apiarytoopenapi/static/js/3.d3c875d3.chunk.js",
+    "static/js/3.d3c875d3.chunk.js.map": "/apiarytoopenapi/static/js/3.d3c875d3.chunk.js.map",
     "index.html": "/apiarytoopenapi/index.html",
-    "static/css/main.efccfdda.chunk.css.map": "/apiarytoopenapi/static/css/main.efccfdda.chunk.css.map",
-    "static/js/2.478f0ff8.chunk.js.LICENSE.txt": "/apiarytoopenapi/static/js/2.478f0ff8.chunk.js.LICENSE.txt",
+    "static/css/main.78145918.chunk.css.map": "/apiarytoopenapi/static/css/main.78145918.chunk.css.map",
+    "static/js/2.883610e2.chunk.js.LICENSE.txt": "/apiarytoopenapi/static/js/2.883610e2.chunk.js.LICENSE.txt",
     "static/media/zennya.be197840.svg": "/apiarytoopenapi/static/media/zennya.be197840.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.05821ff7.js",
-    "static/js/2.478f0ff8.chunk.js",
-    "static/css/main.efccfdda.chunk.css",
-    "static/js/main.603477a2.chunk.js"
+    "static/js/runtime-main.049c924f.js",
+    "static/js/2.883610e2.chunk.js",
+    "static/css/main.78145918.chunk.css",
+    "static/js/main.1219ecac.chunk.js"
   ]
 }
