@@ -4,16 +4,14 @@ import { Sticky, StickyContainer } from 'react-sticky';
 const ScrollContainer = ({ header, children }) => {
 
   return (
-    <StickyContainer>
-      <Sticky>
-        {({ style }) => (
-          <div style={{ ...style, zIndex: 1 }}>
-            {header}
-          </div>
-        )}
-      </Sticky>
-      {children}
-    </StickyContainer>
+    <>
+      <div className='fixedheader'>
+        {header}
+      </div>
+      <div className='doccontainer'>
+        {children}
+      </div>
+    </>
   )
 }
 

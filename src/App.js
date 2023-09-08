@@ -5,7 +5,10 @@ import './App.scss';
 import { Header } from './Header';
 import { ScrollContainer } from './ScrollContainer';
 import spec from './spec.json';
+import { useMobileLayout } from './utils/responsive';
 function App() {
+
+  const isMobile = useMobileLayout()
 
   const overrideStyle = useCallback(
     () => {
@@ -18,10 +21,13 @@ function App() {
     [],
   );
 
+
   useLayoutEffect(
     () => {
       subscribeTheme({ mode: 'dark' })
-      const elem = document.querySelector("#mosaic-provider-react-aria-0-2 > div > div > div > div.sl-flex > div.sl-flex.sl-overflow-y-auto.sl-flex-col.sl-sticky.sl-inset-y-0.sl-pt-8.sl-bg-canvas-100.sl-border-r > a")
+      let elem = document.querySelector("div.doccontainer > div > div > div > div > div.sl-flex > div.sl-flex.sl-overflow-y-auto.sl-flex-col.sl-sticky.sl-inset-y-0.sl-pt-8.sl-bg-canvas-100.sl-border-r > a")
+      elem?.remove()
+      elem = document.querySelector("div.doccontainer > div > div > div > div > div.sl-flex > div.sl-flex.sl-overflow-y-auto.sl-flex-col.sl-sticky.sl-inset-y-0.sl-pt-8.sl-bg-canvas-100.sl-border-r > div.sl-flex.sl-items-center.sl-mb-5.sl-ml-4")
       elem?.remove()
       overrideStyle()
     }, [overrideStyle]
@@ -37,8 +43,9 @@ function App() {
       >
         <API
           apiDescriptionDocument={spec}
-          // layout="stacked"
+          // layout={isMobile ? "stacked" : "sidebar"}
           router="hash"
+          hideExport={true}
         />
       </ScrollContainer>
 

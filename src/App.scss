@@ -8,7 +8,21 @@ $lightblue: #3584e4;
     height: calc(100% - 60px);
   }
   background-color: var(--color-canvas);
+  position: relative;
+  .fixedheader{
+    position:fixed;
+    width: 100vw;
+    height: 60px;
+    z-index: 1;
+  }
+  .doccontainer{
+    position: fixed;
+    top:60px;
+    z-index: 0;
+    width: 100vw;
+  }
 }
+
 
 .logo {
   height: 60px;
