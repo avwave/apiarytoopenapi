@@ -20,6 +20,9 @@ $lightblue: #3584e4;
     top:60px;
     z-index: 0;
     width: 100vw;
+    [data-overlay-container="true"] {
+      overflow-y: auto;
+    }
   }
 }
 

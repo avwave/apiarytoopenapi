@@ -43,9 +43,10 @@ function App() {
       >
         <API
           apiDescriptionDocument={spec}
-          // layout={isMobile ? "stacked" : "sidebar"}
+          layout={isMobile ? "stacked" : "sidebar"}
           router="hash"
           hideExport={true}
+          hideSchemas={false}
         />
       </ScrollContainer>
 

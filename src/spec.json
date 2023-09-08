@@ -1,14 +1,14 @@
 {
-    "openapi": "3.0.3",
+    "swagger": "2.0",
     "info": {
         "title": "WhiteLabel Admin",
-        "version": "1.0.0",
-        "description": "WhiteLabel Partner Admin Web App APIs"
+        "version": "",
+        "description": ""
     },
-    "servers": [
-        {
-            "url": "https://dev.api.zennya.com/"
-        }
+    "host": "dev.api.zennya.com",
+    "basePath": "/",
+    "schemes": [
+        "https"
     ],
     "paths": {
         "/api/1/admins/login": {
@@ -17,35 +17,36 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Login",
                 "operationId": "Login",
                 "description": "",
-                "tags": [],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            },
                             "example": {
                                 "email": "email@zennya.com",
                                 "password": "pass"
-                            },
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "password": {
-                                        "type": "string"
-                                    }
-                                }
                             }
                         }
                     }
-                }
+                ]
             }
         },
         "/api/1/maxicare/member_info?card_number={card_number}": {
@@ -54,32 +55,30 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Get Member Info",
                 "operationId": "Get Member Info",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Maxicare Info"
+                ],
                 "parameters": [
                     {
                         "name": "card_number",
                         "in": "path",
                         "description": "Maxicare member card number",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -90,111 +89,136 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {
+                        "examples": {
                             "application/json": {
-                                "schema": {
+                                "id": 3,
+                                "first_name": "fname3",
+                                "middle_name": "mname3",
+                                "last_name": "lname3",
+                                "email": "email3",
+                                "mobile_number": "+639000000003",
+                                "gender": "M",
+                                "birth_date": "1980-02-02T00:00:00Z",
+                                "address": "address3",
+                                "latitude": 8.474664000000104,
+                                "longitude": 124.71138911904904,
+                                "card_number": "cn-000000-000003",
+                                "client": {
+                                    "id": 1429
+                                },
+                                "verified_email": {
+                                    "email": "theEmail",
+                                    "verified": true,
+                                    "date_verified": "2022-05-01T00:00:00Z"
+                                },
+                                "verified_mobile_number": {
+                                    "mobile_number": "+639000000000",
+                                    "verified": true,
+                                    "date_verified": "2022-05-01T00:00:00Z"
+                                }
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "middle_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "mobile_number": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "birth_date": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "card_number": {
+                                    "type": "string"
+                                },
+                                "client": {
                                     "type": "object",
                                     "properties": {
                                         "id": {
                                             "type": "number"
-                                        },
-                                        "first_name": {
-                                            "type": "string"
-                                        },
-                                        "middle_name": {
-                                            "type": "string"
-                                        },
-                                        "last_name": {
-                                            "type": "string"
-                                        },
-                                        "email": {
-                                            "type": "string"
-                                        },
-                                        "mobile_number": {
-                                            "type": "string"
-                                        },
-                                        "gender": {
-                                            "type": "string"
-                                        },
-                                        "birth_date": {
-                                            "type": "string"
-                                        },
-                                        "address": {
-                                            "type": "string"
-                                        },
-                                        "latitude": {
-                                            "type": "number"
-                                        },
-                                        "longitude": {
-                                            "type": "number"
-                                        },
-                                        "card_number": {
-                                            "type": "string"
-                                        },
-                                        "client": {
-                                            "type": "object",
-                                            "properties": {
-                                                "id": {
-                                                    "type": "number"
-                                                }
-                                            }
-                                        },
-                                        "verified_email": {
-                                            "type": "object",
-                                            "properties": {
-                                                "email": {
-                                                    "type": "string"
-                                                },
-                                                "verified": {
-                                                    "type": "boolean"
-                                                },
-                                                "date_verified": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "verified_mobile_number": {
-                                            "type": "object",
-                                            "properties": {
-                                                "mobile_number": {
-                                                    "type": "string"
-                                                },
-                                                "verified": {
-                                                    "type": "boolean"
-                                                },
-                                                "date_verified": {
-                                                    "type": "string"
-                                                }
-                                            }
                                         }
                                     }
                                 },
-                                "example": {
-                                    "id": 3,
-                                    "first_name": "fname3",
-                                    "middle_name": "mname3",
-                                    "last_name": "lname3",
-                                    "email": "email3",
-                                    "mobile_number": "+639000000003",
-                                    "gender": "M",
-                                    "birth_date": "1980-02-02T00:00:00Z",
-                                    "address": "address3",
-                                    "latitude": 8.474664000000104,
-                                    "longitude": 124.71138911904904,
-                                    "card_number": "cn-000000-000003",
-                                    "client": {
-                                        "id": 1429
-                                    },
-                                    "verified_email": {
-                                        "email": "theEmail",
-                                        "verified": true,
-                                        "date_verified": "2022-05-01T00:00:00Z"
-                                    },
-                                    "verified_mobile_number": {
-                                        "mobile_number": "+639000000000",
-                                        "verified": true,
-                                        "date_verified": "2022-05-01T00:00:00Z"
+                                "verified_email": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "verified": {
+                                            "type": "boolean"
+                                        },
+                                        "date_verified": {
+                                            "type": "string"
+                                        }
                                     }
+                                },
+                                "verified_mobile_number": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mobile_number": {
+                                            "type": "string"
+                                        },
+                                        "verified": {
+                                            "type": "boolean"
+                                        },
+                                        "date_verified": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "example": {
+                                "id": 3,
+                                "first_name": "fname3",
+                                "middle_name": "mname3",
+                                "last_name": "lname3",
+                                "email": "email3",
+                                "mobile_number": "+639000000003",
+                                "gender": "M",
+                                "birth_date": "1980-02-02T00:00:00Z",
+                                "address": "address3",
+                                "latitude": 8.474664000000104,
+                                "longitude": 124.71138911904904,
+                                "card_number": "cn-000000-000003",
+                                "client": {
+                                    "id": 1429
+                                },
+                                "verified_email": {
+                                    "email": "theEmail",
+                                    "verified": true,
+                                    "date_verified": "2022-05-01T00:00:00Z"
+                                },
+                                "verified_mobile_number": {
+                                    "mobile_number": "+639000000000",
+                                    "verified": true,
+                                    "date_verified": "2022-05-01T00:00:00Z"
                                 }
                             }
                         }
@@ -203,22 +227,89 @@
                 "summary": "Create Customer",
                 "operationId": "Create Customer",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
+                        "x-example": "AnAuthToken",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
+                            "type": "object",
+                            "properties": {
+                                "full_name": {
+                                    "type": "string"
+                                },
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "middle_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "mobile_number": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "birth_date": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "card_number": {
+                                    "type": "string"
+                                },
+                                "verified_email": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "verified": {
+                                            "type": "boolean"
+                                        },
+                                        "date_verified": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "verified_mobile_number": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mobile_number": {
+                                            "type": "string"
+                                        },
+                                        "verified": {
+                                            "type": "boolean"
+                                        },
+                                        "date_verified": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
                             "example": {
                                 "full_name": "fname3 lname3",
                                 "first_name": "fname3",
@@ -242,79 +333,13 @@
                                     "verified": true,
                                     "date_verified": "2022-05-01T00:00:00Z"
                                 }
-                            },
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "full_name": {
-                                        "type": "string"
-                                    },
-                                    "first_name": {
-                                        "type": "string"
-                                    },
-                                    "middle_name": {
-                                        "type": "string"
-                                    },
-                                    "last_name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "mobile_number": {
-                                        "type": "string"
-                                    },
-                                    "gender": {
-                                        "type": "string"
-                                    },
-                                    "birth_date": {
-                                        "type": "string"
-                                    },
-                                    "address": {
-                                        "type": "string"
-                                    },
-                                    "latitude": {
-                                        "type": "number"
-                                    },
-                                    "longitude": {
-                                        "type": "number"
-                                    },
-                                    "card_number": {
-                                        "type": "string"
-                                    },
-                                    "verified_email": {
-                                        "type": "object",
-                                        "properties": {
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "verified": {
-                                                "type": "boolean"
-                                            },
-                                            "date_verified": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "verified_mobile_number": {
-                                        "type": "object",
-                                        "properties": {
-                                            "mobile_number": {
-                                                "type": "string"
-                                            },
-                                            "verified": {
-                                                "type": "boolean"
-                                            },
-                                            "date_verified": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
-                }
+                ],
+                "produces": [
+                    "application/json"
+                ]
             }
         },
         "/api/1/whitelabel/customers?page_size={page_size}&page_offset={page_offset}&query={query}": {
@@ -323,139 +348,195 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {
+                        "examples": {
                             "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "count": {
-                                            "type": "number"
-                                        },
-                                        "list": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
+                                "count": 3,
+                                "list": [
+                                    {
+                                        "id": 3,
+                                        "first_name": "fname3",
+                                        "middle_name": "mname3",
+                                        "last_name": "lname3",
+                                        "email": "email3",
+                                        "mobile_number": "+639000000003",
+                                        "gender": "M",
+                                        "birth_date": "1980-02-02T00:00:00Z",
+                                        "address": "address3",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": "cn-000000-000003",
+                                        "client": {
+                                            "id": 1429
+                                        }
+                                    },
+                                    {
+                                        "id": 2,
+                                        "first_name": "fname2",
+                                        "middle_name": "mname2",
+                                        "last_name": "lname2",
+                                        "email": "email2",
+                                        "mobile_number": "mobile2",
+                                        "gender": "M",
+                                        "birth_date": "1980-01-01T00:00:00Z",
+                                        "address": "address2",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": "cn000002",
+                                        "client": {
+                                            "id": 1428
+                                        }
+                                    },
+                                    {
+                                        "id": 1,
+                                        "first_name": "fname1",
+                                        "middle_name": "mname1",
+                                        "last_name": "lname1",
+                                        "email": "email1",
+                                        "mobile_number": "mobile1",
+                                        "gender": "M",
+                                        "birth_date": "0006-06-03T00:00:00Z",
+                                        "address": "address1",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": null,
+                                        "client": null
+                                    }
+                                ]
+                            }
+                        },
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "number"
+                                },
+                                "list": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            },
+                                            "first_name": {
+                                                "type": "string"
+                                            },
+                                            "middle_name": {
+                                                "type": "string"
+                                            },
+                                            "last_name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "mobile_number": {
+                                                "type": "string"
+                                            },
+                                            "gender": {
+                                                "type": "string"
+                                            },
+                                            "birth_date": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "latitude": {
+                                                "type": "number"
+                                            },
+                                            "longitude": {
+                                                "type": "number"
+                                            },
+                                            "card_number": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "client": {
+                                                "type": [
+                                                    "object",
+                                                    "null"
+                                                ],
                                                 "properties": {
                                                     "id": {
                                                         "type": "number"
-                                                    },
-                                                    "first_name": {
-                                                        "type": "string"
-                                                    },
-                                                    "middle_name": {
-                                                        "type": "string"
-                                                    },
-                                                    "last_name": {
-                                                        "type": "string"
-                                                    },
-                                                    "email": {
-                                                        "type": "string"
-                                                    },
-                                                    "mobile_number": {
-                                                        "type": "string"
-                                                    },
-                                                    "gender": {
-                                                        "type": "string"
-                                                    },
-                                                    "birth_date": {
-                                                        "type": "string"
-                                                    },
-                                                    "address": {
-                                                        "type": "string"
-                                                    },
-                                                    "latitude": {
-                                                        "type": "number"
-                                                    },
-                                                    "longitude": {
-                                                        "type": "number"
-                                                    },
-                                                    "card_number": {
-                                                        "type": "string",
-                                                        "nullable": true
-                                                    },
-                                                    "client": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "id": {
-                                                                "type": "number"
-                                                            }
-                                                        },
-                                                        "nullable": true
                                                     }
-                                                },
-                                                "required": [
-                                                    "id",
-                                                    "first_name",
-                                                    "middle_name",
-                                                    "last_name",
-                                                    "email",
-                                                    "mobile_number",
-                                                    "gender",
-                                                    "birth_date",
-                                                    "address",
-                                                    "latitude",
-                                                    "longitude",
-                                                    "card_number",
-                                                    "client"
-                                                ]
+                                                }
                                             }
-                                        }
+                                        },
+                                        "required": [
+                                            "id",
+                                            "first_name",
+                                            "middle_name",
+                                            "last_name",
+                                            "email",
+                                            "mobile_number",
+                                            "gender",
+                                            "birth_date",
+                                            "address",
+                                            "latitude",
+                                            "longitude",
+                                            "card_number",
+                                            "client"
+                                        ]
                                     }
-                                },
-                                "example": {
-                                    "count": 3,
-                                    "list": [
-                                        {
-                                            "id": 3,
-                                            "first_name": "fname3",
-                                            "middle_name": "mname3",
-                                            "last_name": "lname3",
-                                            "email": "email3",
-                                            "mobile_number": "+639000000003",
-                                            "gender": "M",
-                                            "birth_date": "1980-02-02T00:00:00Z",
-                                            "address": "address3",
-                                            "latitude": 8.47,
-                                            "longitude": 124.71,
-                                            "card_number": "cn-000000-000003",
-                                            "client": {
-                                                "id": 1429
-                                            }
-                                        },
-                                        {
-                                            "id": 2,
-                                            "first_name": "fname2",
-                                            "middle_name": "mname2",
-                                            "last_name": "lname2",
-                                            "email": "email2",
-                                            "mobile_number": "mobile2",
-                                            "gender": "M",
-                                            "birth_date": "1980-01-01T00:00:00Z",
-                                            "address": "address2",
-                                            "latitude": 8.47,
-                                            "longitude": 124.71,
-                                            "card_number": "cn000002",
-                                            "client": {
-                                                "id": 1428
-                                            }
-                                        },
-                                        {
-                                            "id": 1,
-                                            "first_name": "fname1",
-                                            "middle_name": "mname1",
-                                            "last_name": "lname1",
-                                            "email": "email1",
-                                            "mobile_number": "mobile1",
-                                            "gender": "M",
-                                            "birth_date": "0006-06-03T00:00:00Z",
-                                            "address": "address1",
-                                            "latitude": 8.47,
-                                            "longitude": 124.71,
-                                            "card_number": null,
-                                            "client": null
-                                        }
-                                    ]
                                 }
+                            },
+                            "example": {
+                                "count": 3,
+                                "list": [
+                                    {
+                                        "id": 3,
+                                        "first_name": "fname3",
+                                        "middle_name": "mname3",
+                                        "last_name": "lname3",
+                                        "email": "email3",
+                                        "mobile_number": "+639000000003",
+                                        "gender": "M",
+                                        "birth_date": "1980-02-02T00:00:00Z",
+                                        "address": "address3",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": "cn-000000-000003",
+                                        "client": {
+                                            "id": 1429
+                                        }
+                                    },
+                                    {
+                                        "id": 2,
+                                        "first_name": "fname2",
+                                        "middle_name": "mname2",
+                                        "last_name": "lname2",
+                                        "email": "email2",
+                                        "mobile_number": "mobile2",
+                                        "gender": "M",
+                                        "birth_date": "1980-01-01T00:00:00Z",
+                                        "address": "address2",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": "cn000002",
+                                        "client": {
+                                            "id": 1428
+                                        }
+                                    },
+                                    {
+                                        "id": 1,
+                                        "first_name": "fname1",
+                                        "middle_name": "mname1",
+                                        "last_name": "lname1",
+                                        "email": "email1",
+                                        "mobile_number": "mobile1",
+                                        "gender": "M",
+                                        "birth_date": "0006-06-03T00:00:00Z",
+                                        "address": "address1",
+                                        "latitude": 8.47,
+                                        "longitude": 124.71,
+                                        "card_number": null,
+                                        "client": null
+                                    }
+                                ]
                             }
                         }
                     }
@@ -463,42 +544,42 @@
                 "summary": "List Customers",
                 "operationId": "List Customers",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "page_size",
                         "in": "path",
                         "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "page_offset",
                         "in": "path",
                         "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "query",
                         "in": "path",
                         "description": "Either first name, last name or card number",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
+                ],
+                "produces": [
+                    "application/json"
                 ]
             }
         },
@@ -508,32 +589,30 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "List Client Locations",
                 "operationId": "List Client Locations",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "client_id",
                         "in": "path",
                         "description": "From the client.id property of the customer object",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -544,32 +623,30 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Calculate Booking Amounts",
                 "operationId": "Calculate Booking Amounts",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "client_id",
                         "in": "path",
                         "description": "From the client.id property of the customer object",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -580,68 +657,32 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Verify Booking Schedules",
                 "operationId": "Verify Booking Schedules",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "client_id",
                         "in": "path",
                         "description": "From the client.id property of the customer object",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "example": {
-                                "should_check_for_medical_id": false,
-                                "client_type": "web",
-                                "wlp_id": 1,
-                                "date_scheduled": "2023-01-20T00:00:00.000Z",
-                                "extended_package_items": [
-                                    2,
-                                    4,
-                                    27,
-                                    8,
-                                    101,
-                                    3,
-                                    1,
-                                    26,
-                                    29,
-                                    5,
-                                    185,
-                                    15,
-                                    6,
-                                    7,
-                                    14,
-                                    28
-                                ],
-                                "type": 15,
-                                "duration": 60,
-                                "should_check_for_payment": false,
-                                "city": 1
-                            }
-                        }
-                    }
-                }
+                ]
             }
         },
         "/api/1/clients/{client_id}/bookings/createSingle": {
@@ -650,37 +691,86 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Create WhiteLabel Booking",
                 "operationId": "Create WhiteLabel Booking",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "client_id",
                         "in": "path",
                         "description": "From the client.id property of the customer object",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
+                        "x-example": "AnAuthToken",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
+                            "type": "object",
+                            "properties": {
+                                "date_scheduled": {
+                                    "type": "string"
+                                },
+                                "media_files": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "service_addon_order": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "service_addon_id": {
+                                                "type": "number"
+                                            },
+                                            "priority": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "type": {
+                                    "type": "number"
+                                },
+                                "extended_packages": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "extended_package_items": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "white_label_customer": {
+                                    "type": "number"
+                                },
+                                "wlp_id": {
+                                    "type": "number"
+                                },
+                                "city": {
+                                    "type": "number"
+                                }
+                            },
                             "example": {
                                 "date_scheduled": "2023-01-20T00:00:00Z",
                                 "media_files": [],
@@ -716,63 +806,10 @@
                                 "white_label_customer": 118,
                                 "wlp_id": 1,
                                 "city": 1
-                            },
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "date_scheduled": {
-                                        "type": "string"
-                                    },
-                                    "media_files": {
-                                        "type": "array",
-                                        "items": {}
-                                    },
-                                    "service_addon_order": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string"
-                                                },
-                                                "service_addon_id": {
-                                                    "type": "number"
-                                                },
-                                                "priority": {
-                                                    "type": "number"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "type": {
-                                        "type": "number"
-                                    },
-                                    "extended_packages": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "number"
-                                        }
-                                    },
-                                    "extended_package_items": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "number"
-                                        }
-                                    },
-                                    "white_label_customer": {
-                                        "type": "number"
-                                    },
-                                    "wlp_id": {
-                                        "type": "number"
-                                    },
-                                    "city": {
-                                        "type": "number"
-                                    }
-                                }
                             }
                         }
                     }
-                }
+                ]
             }
         },
         "/api/1/whitelabel/bookings?page_size={page_size}&page_offset={page_offset}": {
@@ -781,39 +818,37 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "List Bookings",
                 "operationId": "List Bookings",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "page_size",
                         "in": "path",
                         "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "page_offset",
                         "in": "path",
                         "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -824,23 +859,23 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Upload Booking Document",
                 "operationId": "Upload Booking Document",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -851,32 +886,30 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "List Booking Documents",
                 "operationId": "List Booking Documents",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "request_id",
                         "in": "path",
                         "description": "Service Request ID",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -887,32 +920,30 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Download Booking Document",
                 "operationId": "Download Booking Document",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "media_id",
                         "in": "path",
                         "description": "Media ID",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -923,42 +954,40 @@
                     "204": {
                         "description": "No Content",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "Send Booking Confirmation Notification",
                 "operationId": "Send Booking Confirmation Notification",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
+                        "x-example": "AnAuthToken",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
                         "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "string"
+                                }
+                            },
                             "example": {
                                 "request_id": "624eec596c805b4d63583438"
-                            },
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "request_id": {
-                                        "type": "string"
-                                    }
-                                }
                             }
                         }
                     }
-                }
+                ]
             }
         },
         "/whitelabel/services?latitude={latitude}&longitude={longitude}": {
@@ -967,41 +996,37 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "List Services",
                 "operationId": "List Services",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Whitelabel"
+                ],
                 "parameters": [
                     {
                         "name": "latitude",
                         "in": "path",
                         "description": "",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "longitude",
                         "in": "path",
                         "description": "",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
@@ -1012,30 +1037,50 @@
                     "200": {
                         "description": "OK",
                         "headers": {},
-                        "content": {}
+                        "examples": {}
                     }
                 },
                 "summary": "List Cities",
                 "operationId": "List Cities",
                 "description": "",
-                "tags": [],
+                "tags": [
+                    "Cities"
+                ],
                 "parameters": [
                     {
                         "name": "X-Auth-Token",
                         "in": "header",
                         "description": "e.g. AnAuthToken",
                         "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "AnAuthToken"
+                        "x-example": "AnAuthToken",
+                        "type": "string"
                     }
                 ]
             }
         }
     },
-    "components": {
-        "schemas": {}
+    "definitions": {
+        "Admin Login": {},
+        "Maxicare Member Info": {},
+        "WhiteLabel Customers": {},
+        "WhiteLabel Bookings": {},
+        "WhiteLabel Services": {},
+        "Cities": {}
     },
-    "tags": []
+    "securityDefinitions": {},
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "WhiteLabel Partner Admin Web App APIs"
+        },
+        {
+            "name": "Maxicare Info"
+        },
+        {
+            "name": "Whitelabel"
+        },
+        {
+            "name": "Cities"
+        }
+    ]
 }
